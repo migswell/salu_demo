@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create or edit a Salu fund.">
+  <title>Create a fund | Salu</title>
+  <link rel="icon" href="images/salu-logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Fraunces:wght@700;900&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="has-app-nav" data-page="fund-form">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <p class="demo-bar">Demo prototype for FINT109. No real money moves. <a href="help.html#privacy">Privacy notice</a></p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="dashboard.html"><img src="images/salu-wordmark.webp" alt="Salu home" width="480" height="231"></a>
+      <nav class="app-nav" aria-label="Main">
+        <ul>
+        <li><a href="dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Home</a></li>
+        <li><a href="create-fund.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>New fund</a></li>
+        <li><a href="help.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.3 2.4c-.6.3-.9.8-.9 1.4v.5"/><path d="M12 16.8v.2"/></svg>Help</a></li>
+        </ul>
+      </nav>
+      <div class="account">
+        <a class="header-link account-link" href="profile.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.8-3.6 3.9-6 7.5-6s6.7 2.4 7.5 6"/></svg><span class="sr-only">Profile: </span><span class="js-nickname">You</span></a>
+        <a class="header-link" href="index.html" data-logout>Log out</a>
+      </div>
+      <a class="header-link guest-only" href="index.html">Sign in</a>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div id="form-content">
+      <div class="page-head">
+        <h1 id="form-title">Create a fund</h1>
+        <p id="form-sub">Set your goal and the rules once. Everyone sees them before they join.</p>
+      </div>
+
+      <div class="two-col">
+      <form id="fund-form" class="form" novalidate>
+        <div class="alert alert-error form-errors" tabindex="-1" role="alert"></div>
+        <p class="small muted m0">Fields marked <span class="req">*</span> are required.</p>
+
+        <div class="field">
+          <label for="fundName">Fund name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="fundName" name="fundName" required maxlength="40" autocomplete="off"
+                 placeholder="e.g. Barkada Trip 2027" aria-describedby="fundName-error"
+                 data-label="Fund name" data-required="Give your fund a name.">
+          <p class="error-text" id="fundName-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="purpose">What are you saving for? <span class="req" aria-hidden="true">*</span></label>
+          <select id="purpose" name="purpose" required aria-describedby="purpose-error" data-label="Savings goal" data-required="Choose a savings goal.">
+            <option value="">Choose one</option>
+            <option>Gadget</option>
+            <option>Trip</option>
+            <option>Academic expenses (tuition, etc)</option>
+            <option>Holiday expenses</option>
+            <option>Emergency fund</option>
+            <option>Other</option>
+          </select>
+          <p class="error-text" id="purpose-error" hidden></p>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="goal">Savings goal <span class="req" aria-hidden="true">*</span></label>
+            <div class="input-prefix"><span aria-hidden="true">₱</span>
+              <input type="number" id="goal" name="goal" required min="1000" max="600000" step="1" inputmode="numeric"
+                     aria-describedby="goal-hint goal-error" data-label="Savings goal"
+                     data-required="Enter how much you want to save." data-range="Enter a whole amount from ₱1,000 to ₱600,000.">
+            </div>
+            <p class="hint" id="goal-hint">What each member receives on their turn, and what you’ll have saved by the end.</p>
+            <p class="error-text" id="goal-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="size">Number of members <span class="req" aria-hidden="true">*</span></label>
+            <input type="number" id="size" name="size" required min="3" max="12" step="1" inputmode="numeric"
+                   aria-describedby="size-hint size-error" data-label="Number of members"
+                   data-required="Enter how many members, including you." data-range="Groups have 3 to 12 members.">
+            <p class="hint" id="size-hint">3 to 12, including you. The goal is split evenly between members.</p>
+            <p class="error-text" id="size-error" hidden></p>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>How often do members pay? <span class="req" aria-hidden="true">*</span></legend>
+          <label class="choice"><input type="radio" name="frequency" id="freq-weekly" value="Weekly" required data-label="Payment schedule" data-required="Choose a payment schedule." aria-describedby="frequency-error"><span>Weekly</span></label>
+          <label class="choice"><input type="radio" name="frequency" id="freq-twice" value="Twice a month"><span>Twice a month <small>Every 15 days, around payday</small></span></label>
+          <label class="choice"><input type="radio" name="frequency" id="freq-monthly" value="Monthly"><span>Monthly</span></label>
+          <p class="error-text" id="frequency-error" hidden></p>
+        </fieldset>
+
+        <div class="field">
+          <label for="firstDate">First due date <span class="req" aria-hidden="true">*</span></label>
+          <input type="date" id="firstDate" name="firstDate" required aria-describedby="firstDate-hint firstDate-error"
+                 data-label="First due date" data-required="Choose the first due date." data-range="Choose today or a later date.">
+          <p class="hint" id="firstDate-hint">The first payout also happens on this date.</p>
+          <p class="hint" id="locked-note" hidden>The goal, members and schedule are locked because contributions have already been paid.</p>
+          <p class="error-text" id="firstDate-error" hidden></p>
+        </div>
+
+        <fieldset>
+          <legend>How should the payout order be set? <span class="req" aria-hidden="true">*</span></legend>
+          <label class="choice"><input type="radio" name="order" id="order-draw" value="Fair Draw (random)" required checked data-label="Payout order" data-required="Choose how to set the payout order." aria-describedby="order-error"><span>Fair Draw <small>Salu draws the order at random once everyone joins</small></span></label>
+          <label class="choice"><input type="radio" name="order" id="order-agreed" value="Agreed by the group"><span>Agreed by the group <small>Members confirm the order together before it locks</small></span></label>
+          <p class="error-text" id="order-error" hidden></p>
+        </fieldset>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="wallet">Pay from <span class="req" aria-hidden="true">*</span></label>
+            <select id="wallet" name="wallet" required aria-describedby="wallet-error" data-label="Pay from" data-required="Choose the wallet Auto-Hulog will use.">
+              <option value="">Choose one</option>
+              <option>GCash</option>
+              <option>Maya</option>
+              <option>Bank account</option>
+            </select>
+            <p class="error-text" id="wallet-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="mobile">Mobile number for reminders <span class="req" aria-hidden="true">*</span></label>
+            <input type="tel" id="mobile" name="mobile" required pattern="09[0-9]{9}" maxlength="11" inputmode="numeric" autocomplete="tel"
+                   placeholder="09XXXXXXXXX" aria-describedby="mobile-error" data-label="Mobile number"
+                   data-required="Enter your mobile number." data-pattern="Use 11 digits starting with 09.">
+            <p class="error-text" id="mobile-error" hidden></p>
+          </div>
+        </div>
+
+        <label class="choice check" for="autohulog">
+          <input type="checkbox" id="autohulog" name="autohulog" required data-label="Auto-Hulog" data-required="Auto-Hulog is needed to keep payments on time." aria-describedby="autohulog-error">
+          <span>Allow Auto-Hulog to collect my contribution on each due date. <span class="req" aria-hidden="true">*</span></span>
+        </label>
+        <p class="error-text" id="autohulog-error" hidden></p>
+
+        <label class="choice check" for="terms">
+          <input type="checkbox" id="terms" name="terms" required data-label="Fund rules" data-required="Please agree to the fund rules and privacy notice." aria-describedby="terms-error">
+          <span>I agree to the fund rules and the <a href="help.html#privacy">privacy notice</a>. <span class="req" aria-hidden="true">*</span></span>
+        </label>
+        <p class="error-text" id="terms-error" hidden></p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn" id="form-submit">Create fund</button>
+          <button type="reset" class="btn btn-secondary" id="form-reset">Clear form</button>
+          <a class="btn btn-secondary" id="cancel-edit" href="dashboard.html" hidden>Cancel</a>
+        </div>
+      </form>
+
+        <aside class="section" aria-labelledby="estimate-title">
+          <div class="panel">
+            <h2 id="estimate-title" class="label">Each member pays</h2>
+            <p class="due-amount money" id="est-contribution" aria-live="polite">—</p>
+            <p class="small muted">per turn, the goal split evenly (rounded up to the peso).</p>
+            <dl class="facts">
+              <div><dt>Each payout</dt><dd id="est-payout" class="money">—</dd></div>
+              <div><dt>Last payout</dt><dd id="est-end">—</dd></div>
+            </dl>
+            <p class="small muted mt-sm m0">A 1.5% service fee is added to each contribution. It funds the Salo Fund, which covers missed payments.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="fund-missing" hidden>
+      <div class="page-head">
+        <h1>Fund not found</h1>
+        <p>It may have been deleted.</p>
+      </div>
+      <a class="btn" href="dashboard.html">Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Salu is a fictional FinTech prototype for FINT109 Mobile Web App Development. All names and amounts are sample data.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

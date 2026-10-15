@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to Salu.">
+  <title>Sign in | Salu</title>
+  <link rel="icon" href="images/salu-logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Fraunces:wght@700;900&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="signin">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <p class="demo-bar">Demo prototype for FINT109. No real money moves. <a href="help.html#privacy">Privacy notice</a></p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/salu-wordmark.webp" alt="Salu home" width="480" height="231"></a>
+      <a class="header-link" href="help.html">Help</a>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="auth">
+      <p class="small m0"><a href="index.html">&larr; Back</a></p>
+      <div class="page-head mt-sm">
+        <h1>Sign in</h1>
+        <p>Welcome back. Enter your mobile number and PIN.</p>
+      </div>
+
+      <form id="signin-form" class="panel form" novalidate>
+        <div class="alert alert-info m0">
+          <p>Trying the demo? Use <strong>09171234567</strong> and PIN <strong>1234</strong>.</p>
+        </div>
+        <div class="alert alert-error form-errors" tabindex="-1" role="alert"></div>
+
+        <div class="field">
+          <label for="mobile">Mobile number <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="mobile" name="mobile" inputmode="numeric" autocomplete="tel" placeholder="09XXXXXXXXX"
+                 required pattern="09[0-9]{9}" maxlength="11" aria-describedby="mobile-error"
+                 data-label="Mobile number" data-required="Enter your mobile number." data-pattern="Use 11 digits starting with 09, e.g. 09171234567.">
+          <p class="error-text" id="mobile-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="pin">4-digit PIN <span class="req" aria-hidden="true">*</span></label>
+          <input type="password" id="pin" name="pin" inputmode="numeric" autocomplete="current-password"
+                 required pattern="[0-9]{4}" maxlength="4" aria-describedby="pin-error"
+                 data-label="PIN" data-required="Enter your 4-digit PIN." data-pattern="Your PIN is 4 numbers.">
+          <p class="error-text" id="pin-error" hidden></p>
+        </div>
+
+        <button type="submit" class="btn btn-block">Sign in</button>
+        <p class="small muted m0">Demo sign-in: accounts are saved only in this browser.</p>
+      </form>
+
+      <p class="small mt-sm">New to Salu? <a href="signup.html">Create an account</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Salu is a fictional FinTech prototype for FINT109 Mobile Web App Development. All names and amounts are sample data.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

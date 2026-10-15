@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create your Salu account.">
+  <title>Create an account | Salu</title>
+  <link rel="icon" href="images/salu-logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Fraunces:wght@700;900&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="signup">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <p class="demo-bar">Demo prototype for FINT109. No real money moves. <a href="help.html#privacy">Privacy notice</a></p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/salu-wordmark.webp" alt="Salu home" width="480" height="231"></a>
+      <a class="header-link" href="help.html">Help</a>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="auth">
+      <p class="small m0"><a href="index.html">&larr; Back</a></p>
+      <div class="page-head mt-sm">
+        <h1>Create your account</h1>
+        <p>It takes a minute. Fields marked <span class="req">*</span> are required.</p>
+      </div>
+
+      <form id="signup-form" class="panel form" novalidate>
+        <div class="alert alert-error form-errors" tabindex="-1" role="alert"></div>
+
+        <div class="field">
+          <label for="legalName">Full name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="legalName" name="legalName" required maxlength="60" pattern="[A-Za-zÀ-ÿ .'\-]{2,60}" autocomplete="name"
+                 aria-describedby="legalName-hint legalName-error" data-label="Full name"
+                 data-required="Enter your full name." data-pattern="Use letters only, at least 2 characters.">
+          <p class="hint" id="legalName-hint">As it appears on your valid ID. Kept private, never shown to your groups.</p>
+          <p class="error-text" id="legalName-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="nickname">Nickname <span class="muted">(optional)</span></label>
+          <input type="text" id="nickname" name="nickname" maxlength="20" pattern="[A-Za-z0-9À-ÿ .'\-]{2,20}" autocomplete="nickname"
+                 placeholder="e.g. Jay" aria-describedby="nickname-hint nickname-error" data-label="Nickname"
+                 data-pattern="Use 2 to 20 letters or numbers.">
+          <p class="hint" id="nickname-hint">How your groups will see you. Leave it blank to use your first name. You can change it anytime.</p>
+          <p class="error-text" id="nickname-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="mobile">Mobile number <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="mobile" name="mobile" inputmode="numeric" autocomplete="tel" placeholder="09XXXXXXXXX"
+                 required pattern="09[0-9]{9}" maxlength="11" aria-describedby="mobile-hint mobile-error"
+                 data-label="Mobile number" data-required="Enter your mobile number." data-pattern="Use 11 digits starting with 09, e.g. 09171234567.">
+          <p class="hint" id="mobile-hint">You'll use this to sign in.</p>
+          <p class="error-text" id="mobile-error" hidden></p>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pin">Create a 4-digit PIN <span class="req" aria-hidden="true">*</span></label>
+            <input type="password" id="pin" name="pin" inputmode="numeric" autocomplete="new-password"
+                   required pattern="[0-9]{4}" maxlength="4" aria-describedby="pin-error"
+                   data-label="PIN" data-required="Create a 4-digit PIN." data-pattern="Your PIN must be 4 numbers.">
+            <p class="error-text" id="pin-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="pinConfirm">Confirm PIN <span class="req" aria-hidden="true">*</span></label>
+            <input type="password" id="pinConfirm" name="pinConfirm" inputmode="numeric" autocomplete="new-password"
+                   required pattern="[0-9]{4}" maxlength="4" aria-describedby="pinConfirm-error"
+                   data-label="Confirm PIN" data-required="Enter your PIN again." data-pattern="Your PIN must be 4 numbers.">
+            <p class="error-text" id="pinConfirm-error" hidden></p>
+          </div>
+        </div>
+
+        <label class="choice check" for="terms">
+          <input type="checkbox" id="terms" name="terms" required data-label="Terms" data-required="Please agree to continue." aria-describedby="terms-error">
+          <span>I agree to Salu's terms and <a href="help.html#privacy">privacy notice</a>. <span class="req" aria-hidden="true">*</span></span>
+        </label>
+        <p class="error-text" id="terms-error" hidden></p>
+
+        <button type="submit" class="btn btn-block">Create account</button>
+        <p class="small muted m0">Demo account: saved only in this browser, not checked by a real server.</p>
+      </form>
+
+      <p class="small mt-sm">Already have an account? <a href="signin.html">Sign in</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Salu is a fictional FinTech prototype for FINT109 Mobile Web App Development. All names and amounts are sample data.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
